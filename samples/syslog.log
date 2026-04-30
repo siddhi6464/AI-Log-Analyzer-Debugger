@@ -1,0 +1,28 @@
+Mar 15 06:00:01 web-server-01 systemd[1]: Starting Daily apt download activities...
+Mar 15 06:00:02 web-server-01 systemd[1]: Started Daily apt download activities.
+Mar 15 06:25:10 web-server-01 sshd[12340]: Failed password for invalid user root from 45.33.32.156 port 54321 ssh2
+Mar 15 06:25:12 web-server-01 sshd[12341]: Failed password for invalid user admin from 45.33.32.156 port 54322 ssh2
+Mar 15 06:25:14 web-server-01 sshd[12342]: Failed password for invalid user root from 45.33.32.156 port 54323 ssh2
+Mar 15 06:25:16 web-server-01 sshd[12343]: Failed password for invalid user test from 45.33.32.156 port 54324 ssh2
+Mar 15 06:25:18 web-server-01 sshd[12344]: Failed password for invalid user root from 45.33.32.156 port 54325 ssh2
+Mar 15 06:25:20 web-server-01 sshd[12345]: Failed password for invalid user admin from 45.33.32.156 port 54326 ssh2
+Mar 15 06:25:22 web-server-01 sshd[12346]: error: maximum authentication attempts exceeded for root from 45.33.32.156 port 54327 ssh2
+Mar 15 06:25:23 web-server-01 sshd[12346]: Disconnecting invalid user root 45.33.32.156 port 54327: Too many authentication failures
+Mar 15 06:30:00 web-server-01 kernel: [482910.123456] Out of memory: Killed process 8432 (java) total-vm:8234567kB, anon-rss:4123456kB, file-rss:0kB
+Mar 15 06:30:01 web-server-01 kernel: [482910.234567] oom_reaper: reaped process 8432 (java), now anon-rss:0kB, file-rss:0kB
+Mar 15 06:30:05 web-server-01 systemd[1]: tomcat.service: Main process exited, code=killed, status=9/KILL
+Mar 15 06:30:06 web-server-01 systemd[1]: tomcat.service: Failed with result 'signal'.
+Mar 15 06:30:10 web-server-01 systemd[1]: tomcat.service: Scheduled restart job, restart counter is at 3.
+Mar 15 06:30:12 web-server-01 systemd[1]: Starting Apache Tomcat Web Application Container...
+Mar 15 06:30:18 web-server-01 systemd[1]: Started Apache Tomcat Web Application Container.
+Mar 15 06:45:30 web-server-01 kernel: [483835.345678] EXT4-fs error (device sda1): ext4_lookup:1590: inode #262147: comm nginx: deleted inode referenced: 524289
+Mar 15 06:45:31 web-server-01 kernel: [483835.456789] EXT4-fs (sda1): error count since last fsck: 5
+Mar 15 07:00:00 web-server-01 CRON[15678]: (root) CMD (/usr/local/bin/backup.sh >> /var/log/backup.log 2>&1)
+Mar 15 07:00:15 web-server-01 backup.sh[15680]: ERROR: rsync failed - connection refused to backup-server.internal:873
+Mar 15 07:00:16 web-server-01 backup.sh[15680]: ERROR: Backup failed for /data/production - no space left on device
+Mar 15 07:15:00 web-server-01 postfix/smtp[16789]: connect to mail.example.com[93.184.216.34]:25: Connection timed out
+Mar 15 07:15:01 web-server-01 postfix/smtp[16789]: 4A3B2C1D0E: to=<alerts@example.com>, relay=none, delay=300, status=deferred (connect to mail.example.com: Connection timed out)
+Mar 15 07:30:00 web-server-01 dockerd[1234]: level=error msg="failed to start container" error="OCI runtime create failed: container_linux.go:380: starting container process caused: process_linux.go:545: container init caused: running prestart hook 0 caused: exit status 1"
+Mar 15 07:30:01 web-server-01 dockerd[1234]: level=error msg="handler for POST /v1.41/containers/abc123/start returned error: Cannot start container: OCI runtime error"
+Mar 15 08:00:00 web-server-01 sshd[18901]: Accepted publickey for deploy from 10.0.0.5 port 43210 ssh2
+Mar 15 08:00:01 web-server-01 systemd[1]: Started Session 145 of user deploy.

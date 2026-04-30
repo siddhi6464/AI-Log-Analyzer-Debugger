@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AI-powered log analysis tool that detects anomalies, classifies error patterns, and suggests root-cause fixes.">
+    <title>AI Log Analyzer & Debugger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <!-- ── Animated Background ── -->
+    <div class="bg-grid"></div>
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- ── Header ── -->
+    <header id="app-header">
+        <div class="header-content">
+            <div class="logo-group">
+                <div class="logo-icon">
+                    <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                        <rect x="2" y="6" width="28" height="3" rx="1.5" fill="#00f0ff" opacity="0.9"/>
+                        <rect x="2" y="12" width="20" height="3" rx="1.5" fill="#ff006e" opacity="0.8"/>
+                        <rect x="2" y="18" width="24" height="3" rx="1.5" fill="#ffbe0b" opacity="0.7"/>
+                        <rect x="2" y="24" width="16" height="3" rx="1.5" fill="#00f0ff" opacity="0.6"/>
+                        <circle cx="28" cy="19.5" r="3" fill="#ff006e"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1>AI Log Analyzer</h1>
+                    <p class="subtitle">Anomaly Detection & Root-Cause Debugging</p>
+                </div>
+            </div>
+            <div class="header-status">
+                <span class="status-dot" id="status-dot"></span>
+                <span class="status-text" id="status-text">Ready</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ── Main Content ── -->
+    <main id="app-main">
+        <!-- Input Panel -->
+        <section class="panel input-panel" id="input-panel">
+            <div class="panel-header">
+                <h2>📋 Log Input</h2>
+                <div class="sample-selector">
+                    <label for="sample-select">Load Sample:</label>
+                    <select id="sample-select">
+                        <option value="">— Select —</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="input-area">
+                <textarea id="log-input" placeholder="Paste your server/application logs here...&#10;&#10;Supported formats:&#10;  • Nginx error logs&#10;  • Python application logs&#10;  • Syslog entries&#10;  • Any timestamped log format&#10;&#10;Or drag & drop a .log file below ↓" spellcheck="false"></textarea>
+
+                <div class="dropzone" id="dropzone">
+                    <div class="dropzone-content">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/>
+                        </svg>
+                        <p>Drop log file here</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="controls">
+                <button id="btn-analyze" class="btn btn-primary">
+                    <span class="btn-icon">🔍</span> Analyze Logs
+                </button>
+                <button id="btn-stream" class="btn btn-secondary">
+                    <span class="btn-icon">📡</span> Stream Analysis
+                </button>
+                <button id="btn-clear" class="btn btn-ghost">
+                    <span class="btn-icon">✕</span> Clear
+                </button>
+                <div class="line-count" id="line-count">0 lines</div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="results-section" style="display:none;">
+
+            <!-- Summary Cards -->
+            <div class="summary-grid" id="summary-grid">
+                <div class="summary-card" id="card-total">
+                    <div class="card-value" id="val-total">0</div>
+                    <div class="card-label">Total Lines</div>
+                    <div class="card-icon">📄</div>
+                </div>
+                <div class="summary-card card-error" id="card-errors">
+                    <div class="card-value" id="val-errors">0</div>
+                    <div class="card-label">Errors</div>
+                    <div class="card-icon">❌</div>
+                </div>
+                <div class="summary-card card-warning" id="card-warnings">
+                    <div class="card-value" id="val-warnings">0</div>
+                    <div class="card-label">Warnings</div>
+                    <div class="card-icon">⚠️</div>
+                </div>
+                <div class="summary-card card-anomaly" id="card-anomalies">
+                    <div class="card-value" id="val-anomalies">0</div>
+                    <div class="card-label">Anomalies</div>
+                    <div class="card-icon">🔮</div>
+                </div>
+                <div class="summary-card card-pattern" id="card-patterns">
+                    <div class="card-value" id="val-patterns">0</div>
+                    <div class="card-label">Patterns</div>
+                    <div class="card-icon">🧬</div>
+                </div>
+                <div class="summary-card card-format" id="card-format">
+                    <div class="card-value" id="val-format">—</div>
+                    <div class="card-label">Log Format</div>
+                    <div class="card-icon">📋</div>
+                </div>
+            </div>
+
+            <!-- Tab Navigation -->
+            <div class="tab-nav" id="tab-nav">
+                <button class="tab active" data-tab="patterns">🧬 Patterns</button>
+                <button class="tab" data-tab="anomalies">🔮 Anomalies</button>
+                <button class="tab" data-tab="suggestions">💡 AI Suggestions</button>
+                <button class="tab" data-tab="ai-analysis">🤖 AI Analysis</button>
+                <button class="tab" data-tab="stream-log">📡 Stream Log</button>
+            </div>
+
+            <!-- Tab Content -->
+            <div class="tab-content">
+                <!-- Patterns Tab -->
+                <div class="tab-pane active" id="tab-patterns">
+                    <div class="panel">
+                        <h3>Detected Error Patterns</h3>
+                        <div id="patterns-list" class="patterns-list">
+                            <p class="empty-state">No patterns detected yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Anomalies Tab -->
+                <div class="tab-pane" id="tab-anomalies">
+                    <div class="panel">
+                        <h3>Detected Anomalies</h3>
+                        <div id="anomalies-list" class="anomalies-list">
+                            <p class="empty-state">No anomalies detected yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Suggestions Tab -->
+                <div class="tab-pane" id="tab-suggestions">
+                    <div class="panel">
+                        <h3>Root-Cause Analysis & Fix Suggestions</h3>
+                        <div id="suggestions-list" class="suggestions-list">
+                            <p class="empty-state">No suggestions generated yet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- AI Analysis Tab -->
+                <div class="tab-pane" id="tab-ai-analysis">
+                    <div class="panel">
+                        <h3>Raw AI Analysis</h3>
+                        <div id="ai-analysis-content" class="ai-analysis-content">
+                            <p class="empty-state">Run analysis to see AI insights.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stream Log Tab -->
+                <div class="tab-pane" id="tab-stream-log">
+                    <div class="panel">
+                        <h3>Live Analysis Stream</h3>
+                        <div id="stream-log" class="stream-log">
+                            <p class="empty-state">Use "Stream Analysis" to see real-time updates.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ── Loading Overlay ── -->
+    <div class="loading-overlay" id="loading-overlay" style="display:none;">
+        <div class="loader">
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <div class="loader-ring"></div>
+            <p class="loader-text" id="loader-text">Analyzing logs...</p>
+        </div>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>

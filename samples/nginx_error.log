@@ -1,0 +1,23 @@
+2025/03/15 08:12:03 [error] 1423#0: *5621 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.45, server: api.example.com, request: "POST /api/v2/auth/login HTTP/1.1", upstream: "http://127.0.0.1:3000/api/v2/auth/login"
+2025/03/15 08:12:03 [warn] 1423#0: *5621 upstream server temporarily disabled while connecting to upstream
+2025/03/15 08:12:05 [error] 1423#0: *5622 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.46, server: api.example.com, request: "GET /api/v2/users HTTP/1.1", upstream: "http://127.0.0.1:3000/api/v2/users"
+2025/03/15 08:12:07 [error] 1423#0: *5623 no live upstreams while connecting to upstream, client: 10.0.0.12, server: api.example.com, request: "GET /health HTTP/1.1"
+2025/03/15 08:12:10 [error] 1423#0: *5624 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.48, server: api.example.com, request: "POST /api/v2/orders HTTP/1.1", upstream: "http://127.0.0.1:3000/api/v2/orders"
+2025/03/15 08:12:15 [error] 1423#0: *5625 SSL_do_handshake() failed (SSL: error:14094410:SSL routines:ssl3_read_bytes:sslv3 alert handshake failure), client: 203.0.113.5, server: secure.example.com
+2025/03/15 08:12:18 [warn] 1423#0: *5626 client intended to send too large body: 52428800 bytes, client: 192.168.1.50, server: upload.example.com, request: "POST /api/upload HTTP/1.1"
+2025/03/15 08:12:20 [error] 1423#0: *5627 open() "/var/www/html/favicon.ico" failed (2: No such file or directory), client: 192.168.1.51, server: www.example.com, request: "GET /favicon.ico HTTP/1.1"
+2025/03/15 08:12:25 [error] 1423#0: *5628 connect() failed (110: Connection timed out) while connecting to upstream, client: 192.168.1.52, server: api.example.com, request: "GET /api/v2/reports/generate HTTP/1.1", upstream: "http://127.0.0.1:3000/api/v2/reports/generate"
+2025/03/15 08:12:28 [crit] 1423#0: *5629 open() "/var/log/nginx/access.log" failed (28: No space left on device)
+2025/03/15 08:12:30 [error] 1423#0: *5630 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.53, server: api.example.com, request: "DELETE /api/v2/sessions HTTP/1.1"
+2025/03/15 08:12:35 [error] 1423#0: *5631 upstream timed out (110: Connection timed out) while reading response header from upstream, client: 10.0.0.15, server: api.example.com, request: "POST /api/v2/batch/process HTTP/1.1", upstream: "http://127.0.0.1:3000/api/v2/batch/process"
+2025/03/15 08:12:40 [error] 1423#0: *5632 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.55, server: api.example.com, request: "GET /api/v2/dashboard HTTP/1.1"
+2025/03/15 08:12:42 [warn] 1423#0: *5633 could not build optimal types_hash, you should increase either types_hash_max_size: 1024 or types_hash_bucket_size: 64
+2025/03/15 08:12:45 [error] 1423#0: *5634 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 192.168.1.56, server: api.example.com, request: "POST /api/v2/webhook HTTP/1.1"
+2025/03/15 08:12:50 [error] 1423#0: *5635 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.57, server: api.example.com, request: "GET /api/v2/notifications HTTP/1.1"
+2025/03/15 08:12:55 [crit] 1423#0: *5636 SSL_do_handshake() failed (SSL: error:0A000086:SSL routines::certificate verify failed), client: 203.0.113.10, server: secure.example.com
+2025/03/15 08:13:00 [error] 1423#0: *5637 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.58, server: api.example.com, request: "PUT /api/v2/users/profile HTTP/1.1"
+2025/03/15 08:13:05 [error] 1423#0: *5638 upstream prematurely closed connection while reading response header from upstream, client: 10.0.0.20, server: api.example.com, request: "POST /api/v2/import HTTP/1.1"
+2025/03/15 08:13:10 [error] 1423#0: *5639 open() "/etc/nginx/ssl/server.crt" failed (13: Permission denied), client: 203.0.113.15, server: secure.example.com
+2025/03/15 08:13:15 [error] 1423#0: *5640 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.60, server: api.example.com, request: "GET /api/v2/search HTTP/1.1"
+2025/03/15 08:13:20 [warn] 1423#0: *5641 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/5641 while reading upstream, client: 192.168.1.61, server: api.example.com
+2025/03/15 08:13:25 [error] 1423#0: *5642 connect() failed (111: Connection refused) while connecting to upstream, client: 192.168.1.62, server: api.example.com, request: "POST /api/v2/payments HTTP/1.1"
